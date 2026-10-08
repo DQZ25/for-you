@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f8e9e7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="for you">
+  <title>for you</title>
+  <style>
+    :root{--rose:#e86f86;--deep:#c94766;--ink:#633846}*{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;color:var(--ink);font-family:"Songti SC","STSong",serif;background:#f8e9e7}
+    .page{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden;padding:28px 18px;background:radial-gradient(circle at 50% 42%,#fff 0 12%,transparent 42%),linear-gradient(145deg,#fae9e8,#fdf5ef 48%,#f4dcdf);isolation:isolate}
+    .page:before{content:"";position:absolute;inset:0;opacity:.2;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E")}
+    .glow{position:absolute;width:50vw;aspect-ratio:1;border-radius:50%;filter:blur(65px);opacity:.34;z-index:-1;transition:.8s}.g1{top:-18%;left:-13%;background:#ffb3bf}.g2{right:-15%;bottom:-20%;background:#e5a6ae}.open .g1{background:#ffd4aa;transform:translate(8vw,8vh)}.open .g2{background:#f9bfc9;transform:translate(-8vw,-8vh)}
+    .card{position:relative;width:min(520px,92vw);min-height:min(620px,78svh);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:clamp(28px,6vw,52px) 24px 34px;border:1px solid #ffffffdc;border-radius:40px;color:inherit;background:#fffaf6aa;box-shadow:0 32px 80px #8942502e,inset 0 0 0 1px #be647412;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);-webkit-tap-highlight-color:transparent;cursor:pointer;transition:.25s}
+    .card:active{transform:scale(.985)}.label{font-family:Arial,sans-serif;font-size:10px;letter-spacing:.28em;color:#63384685}
+    .stage{position:relative;display:grid;place-items:center;width:180px;height:180px}.halo{position:absolute;inset:6px;border:1px solid #e86f8638;border-radius:50%;animation:breathe 2.8s ease-in-out infinite}.main-heart{color:var(--rose);font-family:Arial,sans-serif;font-size:102px;line-height:1;filter:drop-shadow(0 15px 15px #c9476638);animation:beat 2.2s ease-in-out infinite;transition:.6s}.open .main-heart{color:var(--deep);animation-duration:1.5s}
+    .spark{position:absolute;color:#da9aa6;font-family:Arial,sans-serif;animation:twinkle 2s ease-in-out infinite}.s1{top:27px;right:14px;font-size:18px}.s2{bottom:22px;left:18px;font-size:12px;animation-delay:.8s}.s3{top:38px;left:18px;font-size:30px;animation-delay:1.3s}
+    .messages{position:relative;display:grid;place-items:center;width:100%;min-height:115px}.message{grid-area:1/1;transition:opacity .45s,transform .55s cubic-bezier(.2,.8,.2,1)}.first{font-size:clamp(36px,10vw,54px);font-weight:600;letter-spacing:.12em}.first.hide{opacity:0;transform:translateY(-18px) scale(.94)}.second{display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(20px) scale(.96);font-size:clamp(27px,7.5vw,41px);font-weight:600;letter-spacing:.05em;text-align:center}.second small{font-size:clamp(16px,4.6vw,21px);font-weight:400;letter-spacing:.08em;color:#986071}.second.show{opacity:1;transform:none}
+    .hint{display:flex;gap:8px;align-items:center;padding:10px 17px;border-radius:999px;background:#e86f861a;color:#a76174;font-family:Arial,sans-serif;font-size:12px;letter-spacing:.15em}.tiny{color:var(--rose);animation:beat 1.4s infinite}.float{position:absolute;z-index:-1;color:#d55e7773;font-family:Arial,sans-serif;animation:float 5s ease-in-out infinite}
+    @keyframes beat{0%,100%{transform:scale(1)}10%{transform:scale(1.09)}20%{transform:scale(1)}30%{transform:scale(1.06)}42%{transform:scale(1)}}@keyframes breathe{0%,100%{transform:scale(.92);opacity:.35}50%{transform:scale(1.08);opacity:1}}@keyframes twinkle{0%,100%{transform:scale(.7);opacity:.35}50%{transform:scale(1.2) rotate(20deg);opacity:1}}@keyframes float{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-18px) rotate(8deg)}}
+    @media(max-width:560px){.card{min-height:70svh;border-radius:32px}.stage{width:150px;height:150px}.main-heart{font-size:86px}}@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important}}
+  </style>
+</head>
+<body>
+  <main class="page" id="page">
+    <div class="glow g1"></div><div class="glow g2"></div>
+    <span class="float" style="top:8%;left:12%;font-size:1.1rem">♡</span><span class="float" style="top:20%;left:77%;font-size:1.45rem;animation-delay:1.1s">♥</span><span class="float" style="top:32%;left:8%;animation-delay:2.4s">♥</span><span class="float" style="top:44%;left:84%;font-size:1.2rem;animation-delay:.6s">♡</span><span class="float" style="top:62%;left:10%;font-size:1.55rem;animation-delay:1.7s">♥</span><span class="float" style="top:73%;left:79%;animation-delay:2.8s">♥</span><span class="float" style="top:86%;left:17%;font-size:1.3rem;animation-delay:.3s">♡</span><span class="float" style="top:91%;left:68%;animation-delay:2s">♥</span>
+    <div class="card" id="card" role="button" tabindex="0" aria-label="打开给你的悄悄话">
+      <span class="label">A LITTLE NOTE FOR YOU</span>
+      <span class="stage" aria-hidden="true"><span class="halo"></span><span class="main-heart">♥</span><span class="spark s1">✦</span><span class="spark s2">✦</span><span class="spark s3">·</span></span>
+      <span class="messages" aria-live="polite"><span class="message first" id="first">我想你啦</span><span class="message second" id="second">开心一点哦！<small>你一直都是我的小朋友</small></span></span>
+      <span class="hint"><span id="hint">轻轻点一下</span><span class="tiny">♥</span></span>
+    </div>
+  </main>
+  <script>
+    const page=document.getElementById('page'),card=document.getElementById('card'),first=document.getElementById('first'),second=document.getElementById('second'),hint=document.getElementById('hint');
+    function toggle(){const open=page.classList.toggle('open');first.classList.toggle('hide',open);second.classList.toggle('show',open);hint.textContent=open?'再点一下':'轻轻点一下';card.setAttribute('aria-label',open?'再看一次想念':'打开给你的悄悄话')}
+    card.addEventListener('click',toggle);card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});
+  </script>
+</body>
+</html>
